@@ -4,6 +4,8 @@ import argparse
 import torch
 import torch.backends.cudnn as cudnn
 import numpy as np
+import sys
+sys.path.append('../')
 from data import cfg_mnet, cfg_slim, cfg_rfb
 from layers.functions.prior_box import PriorBox
 from utils.nms.py_cpu_nms import py_cpu_nms
@@ -16,14 +18,14 @@ from utils.timer import Timer
 
 
 parser = argparse.ArgumentParser(description='Test')
-parser.add_argument('-m', '--trained_model', default='./weights_RFB/RBF_Final.pth',
+parser.add_argument('-m', '--trained_model', default='../weights/RBF_Final.pth',
                     type=str, help='Trained state_dict file path to open')
 parser.add_argument('--network', default='RFB', help='Backbone network mobile0.25 or slim or RFB')
 parser.add_argument('--origin_size', default=False, type=str, help='Whether use origin image size to evaluate')
 parser.add_argument('--long_side', default=320, help='when origin_size is false, long_side is scaled size(320 or 640 for long side)')
-parser.add_argument('--save_folder', default='./widerface_evaluate/widerface_txt/', type=str, help='Dir to save txt results')
+parser.add_argument('--save_folder', default='../widerface_evaluate/widerface_txt/', type=str, help='Dir to save txt results')
 parser.add_argument('--cpu', action="store_true", default=False, help='Use cpu inference')
-parser.add_argument('--dataset_folder', default='./data/widerface/val/images/', type=str, help='dataset path')
+parser.add_argument('--dataset_folder', default='../data/widerface/val/images/', type=str, help='dataset path')
 parser.add_argument('--confidence_threshold', default=0.02, type=float, help='confidence_threshold')
 parser.add_argument('--top_k', default=5000, type=int, help='top_k')
 parser.add_argument('--nms_threshold', default=0.4, type=float, help='nms_threshold')
@@ -223,8 +225,8 @@ if __name__ == '__main__':
                 cv2.circle(img_raw, (b[11], b[12]), 1, (0, 255, 0), 4)
                 cv2.circle(img_raw, (b[13], b[14]), 1, (255, 0, 0), 4)
             # save image
-            if not os.path.exists("./results/"):
-                os.makedirs("./results/")
-            name = "./results/" + str(i) + ".jpg"
+            if not os.path.exists("../results/"):
+                os.makedirs("../results/")
+            name = "../results/" + str(i) + ".jpg"
             cv2.imwrite(name, img_raw)
 
