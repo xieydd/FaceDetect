@@ -1,4 +1,25 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-05-23 21:58:08
+ * @LastEditTime: 2020-06-04 21:07:16
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /FaceDetect/README.md
+--> 
 ### Face Detection Summary
+
+
+
+#### Training
+```
+# Change Training param in data/.config
+$ python train.py --resume_net=./weights/slim_Final.pth --network=slim --resume_epoch=10
+```
+
+#### Calculate flops and model param size
+```
+$ cd utils && python calculate_paremeter_flop.py
+```
 
 #### Site
 - [DBFace for single detector for face with more tricks](https://github.com/dlunion/DBFace)

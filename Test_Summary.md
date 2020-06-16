@@ -36,7 +36,10 @@
 |EfficientNet b3 640 + FPN+SSH context module|0.927 |    0.872   |   0.671| 2.46G
 |EfficientNet b3 640 + FPN+SSH context module + margin based classification loss|0.923 |    0.887   |   0.714| 2.46G
 
-
+2020-05-16
+结论： 
+1. EfficientNet b3 640 + FPN+SSH context module + margin based classification loss margin 中 m 为0.1 fpn 采用 scale_factor, 640 输入下为 0.923 0.893 0.720 作为 CPU Server 版本
+2. 由于 efficient系列模型在 openvino reshape 不了，改用改进版 VGG+SHH+margined based classification loss , FLOPs 2.7G val指标 0.880 0.848 0.673 关键点好于1
 
 
 - lightface1: 采用 1M Slim 那边的backbone，改进版shufflenet v2 0.5，同时将原有的anchor数10提高到13，FLOPs为 65.607M

@@ -51,3 +51,19 @@ cfg_rfb = {
     'image_size': 300
 }
 
+cfg_efficientdet = {
+    'name': 'EfficientnetDet',
+    'min_sizes': [[6, 10,16, 24], [36,42,56, 64], [72,80, 96,118], [144, 199, 224]],
+    'steps': [8, 16, 32, 64],
+    'variance': [0.1, 0.2],
+    'clip': False,
+    'loc_weight': 2.0,
+    'gpu_train': True,
+    'batch_size': 8,
+    'ngpu': 1,
+    'epoch': 250,
+    'decay1': 120,
+    'decay2': 200,
+    'image_size': 320
+}
+

@@ -1,15 +1,26 @@
+'''
+@Author: your name
+@Date: 2020-05-23 21:58:08
+@LastEditTime: 2020-06-04 21:05:47
+@LastEditors: your name
+@Description: In User Settings Edit
+@FilePath: /FaceDetect/utils/calculate_paremeter_flop.py
+'''
 from __future__ import print_function
 import os
 import argparse
 import torch
 import torch.backends.cudnn as cudnn
 import numpy as np
-from data import cfg_mnet, cfg_slim, cfg_rfb
-from layers.functions.prior_box import PriorBox
-from utils.nms.py_cpu_nms import py_cpu_nms
 import cv2
 from thop import profile
 from thop import clever_format
+import sys
+sys.path.append('../')
+from data import cfg_mnet, cfg_slim, cfg_rfb
+from layers.functions.prior_box import PriorBox
+from utils.nms.py_cpu_nms import py_cpu_nms
+
 from models.retinaface import RetinaFace
 from models.net_slim import Slim
 from models.net_rfb import RFB
