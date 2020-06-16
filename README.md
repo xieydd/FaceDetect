@@ -28,3 +28,4 @@ $ cd utils && python calculate_paremeter_flop.py
 - [RetinaFace single Stage Face Detector](https://github.com/deepinsight/insightface/tree/master/RetinaFace)
 - [CenterFace single stage and anchor free inprove generalization](https://github.com/Star-Clouds/CenterFace)
 - [libfacedetection include high profermance inference with SIMD(intel avx2 and arm neon)](https://github.com/ShiqiYu/libfacedetection)
+- [IoU loss for better bindingbox regression and cluster nms for enhancement object detection and instance segmetion](https://github.com/Zzh-tju/DIoU-SSD-pytorch)
