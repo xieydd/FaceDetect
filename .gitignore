@@ -7,3 +7,4 @@ widerface_evaluate/box_overlaps.c
 widerface_evaluate/build/
 widerface_evaluate/widerface_txt/
 *__*__
+weights_vgg/*

@@ -45,3 +45,13 @@
 - lightface1: 采用 1M Slim 那边的backbone，改进版shufflenet v2 0.5，同时将原有的anchor数10提高到13，FLOPs为 65.607M
 - lightface2: 参考 [find-tiny-face](https://github.com/varunagrawal/tiny-faces-pytorch) 将各层特征进行一个融合，提高小人脸检出率，FLOPs为 85.552M
 - lightface3: 直接在slim基础上，将anchor数10提高到13
+
+#### Test
+1. VGG_Light 320
+Easy   Val AP: 0.8089601441130336
+Medium Val AP: 0.6488957359945599
+Hard   Val AP: 0.3033894512658072
+2. VGG_Light 640
+Easy   Val AP: 0.890395149819784
+Medium Val AP: 0.8357327675807253
+Hard   Val AP: 0.5530419590609832

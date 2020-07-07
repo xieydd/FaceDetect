@@ -6,13 +6,14 @@ import torch.backends.cudnn as cudnn
 import numpy as np
 import sys
 sys.path.append('../')
-from data import cfg_mnet, cfg_slim, cfg_rfb
+from data import cfg_mnet, cfg_slim, cfg_rfb, cfg_lightface, cfg_zhuapai, cfg_vgg
 from layers.functions.prior_box import PriorBox
 from utils.nms.py_cpu_nms import py_cpu_nms
 import cv2
 from models.retinaface import RetinaFace
 from models.net_slim import Slim
 from models.net_rfb import RFB
+from models.net_vgg import Light_VGG
 from utils.box_utils import decode, decode_landm
 from utils.timer import Timer
 
@@ -20,9 +21,9 @@ from utils.timer import Timer
 parser = argparse.ArgumentParser(description='Test')
 parser.add_argument('-m', '--trained_model', default='../weights/RBF_Final.pth',
                     type=str, help='Trained state_dict file path to open')
-parser.add_argument('--network', default='RFB', help='Backbone network mobile0.25 or slim or RFB')
+parser.add_argument('--network', default='RFB', help='Backbone network mobile0.25 or slim or RFB or VGG')
 parser.add_argument('--origin_size', default=False, type=str, help='Whether use origin image size to evaluate')
-parser.add_argument('--long_side', default=320, help='when origin_size is false, long_side is scaled size(320 or 640 for long side)')
+parser.add_argument('--long_side', default=320, type=int,help='when origin_size is false, long_side is scaled size(320 or 640 for long side)')
 parser.add_argument('--save_folder', default='../widerface_evaluate/widerface_txt/', type=str, help='Dir to save txt results')
 parser.add_argument('--cpu', action="store_true", default=False, help='Use cpu inference')
 parser.add_argument('--dataset_folder', default='../data/widerface/val/images/', type=str, help='dataset path')
@@ -85,6 +86,9 @@ if __name__ == '__main__':
     elif args.network == "RFB":
         cfg = cfg_rfb
         net = RFB(cfg = cfg, phase = 'test')
+    elif args.network == "VGG":
+        cfg = cfg_vgg
+        net = Light_VGG(cfg=cfg)
     else:
         print("Don't support network!")
         exit(0)
